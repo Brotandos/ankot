@@ -59,14 +59,14 @@ val singleLine: TextView.() -> Unit = {
     singleLine = true
 }
 
-fun TextView.text(size: Float): TextView.() -> Unit = {
+fun text(size: Float): TextView.() -> Unit = {
     textSize = dip(size).toFloat()
 }
 
-fun TextView.text(color: Int): TextView.() -> Unit = {
+fun text(color: Int): TextView.() -> Unit = {
     textColor = color
 }
 
-fun TextView.hint(hint: CharSequence): TextView.() -> Unit = {
+fun hint(hint: CharSequence): TextView.() -> Unit = {
     this.hint = hint
 }

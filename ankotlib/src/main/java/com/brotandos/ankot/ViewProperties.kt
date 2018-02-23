@@ -1,5 +1,6 @@
 package com.brotandos.ankot
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import org.jetbrains.anko.dip
 
@@ -26,6 +27,13 @@ val enabled: View.() -> Unit = {
 
 val disabled: View.() -> Unit = {
     isEnabled = false
+}
+
+/**
+ * 'bg' stands for 'background'
+ * */
+fun View.bg(drawable: Drawable): View.() -> Unit = {
+    background = drawable
 }
 
 /**
