@@ -1,0 +1,2 @@
+include ':ankotlib'//, 'app'
+rootProject.name = 'ankot'
