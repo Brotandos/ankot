@@ -54,14 +54,14 @@ val bold: TextView.() -> Unit = {
     typeface = Typeface.DEFAULT_BOLD
 }
 
-fun TextView.text(size: Float): () -> Unit = {
+fun text(size: Float): TextView.() -> Unit = {
     textSize = dip(size).toFloat()
 }
 
-fun TextView.text(color: Int): () -> Unit = {
+fun text(color: Int): TextView.() -> Unit = {
     textColor = color
 }
 
-fun TextView.hint(hint: CharSequence): () -> Unit = {
+fun hint(hint: CharSequence): TextView.() -> Unit = {
     this.hint = hint
 }
