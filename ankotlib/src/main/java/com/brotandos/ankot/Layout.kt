@@ -60,6 +60,16 @@ import org.jetbrains.anko.custom.ankoView
     fun dpM(l: Int, t: Int, r: Int, b: Int): .LayoutParams.() -> Unit = {
         setMargins(dip(l), dip(t), dip(r), dip(b))
     }
+    fun dpHorizontalM(c: Int): .LayoutParams.() -> Unit = {
+        val value = dip(c)
+        marginStart = value
+        marginEnd = value
+    }
+    fun dpVerticalM(c: Int): .LayoutParams.() -> Unit = {
+        val value = dip(c)
+        topMargin = value
+        bottomMargin = value
+    }
     fun dpTopM(c: Int): .LayoutParams.() -> Unit = {
         this.topMargin = dip(c)
     }
@@ -126,6 +136,16 @@ class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
     }
     fun dpM(l: Int, t: Int, r: Int, b: Int): FrameLayout.LayoutParams.() -> Unit = {
         setMargins(dip(l), dip(t), dip(r), dip(b))
+    }
+    fun dpHorizontalM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        val value = dip(c)
+        marginStart = value
+        marginEnd = value
+    }
+    fun dpVerticalM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        val value = dip(c)
+        topMargin = value
+        bottomMargin = value
     }
     fun dpTopM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         this.topMargin = dip(c)
@@ -199,6 +219,16 @@ class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
     }
     fun dpM(l: Int, t: Int, r: Int, b: Int): LinearLayout.LayoutParams.() -> Unit = {
         setMargins(dip(l), dip(t), dip(r), dip(b))
+    }
+    fun dpHorizontalM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        val value = dip(c)
+        marginStart = value
+        marginEnd = value
+    }
+    fun dpVerticalM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        val value = dip(c)
+        topMargin = value
+        bottomMargin = value
     }
     fun dpTopM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         this.topMargin = dip(c)
