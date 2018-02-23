@@ -10,6 +10,7 @@ import android.widget.TextView
 import org.jetbrains.anko.AnkoViewDslMarker
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.dip
+import org.jetbrains.anko.singleLine
 import org.jetbrains.anko.textColor
 
 /**
@@ -54,14 +55,18 @@ val bold: TextView.() -> Unit = {
     typeface = Typeface.DEFAULT_BOLD
 }
 
-fun text(size: Float): TextView.() -> Unit = {
+val singleLine: TextView.() -> Unit = {
+    singleLine = true
+}
+
+fun TextView.text(size: Float): TextView.() -> Unit = {
     textSize = dip(size).toFloat()
 }
 
-fun text(color: Int): TextView.() -> Unit = {
+fun TextView.text(color: Int): TextView.() -> Unit = {
     textColor = color
 }
 
-fun hint(hint: CharSequence): TextView.() -> Unit = {
+fun TextView.hint(hint: CharSequence): TextView.() -> Unit = {
     this.hint = hint
 }

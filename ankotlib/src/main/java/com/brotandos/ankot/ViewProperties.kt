@@ -31,15 +31,15 @@ val disabled: View.() -> Unit = {
 /**
  * Listeners setting functions
  * */
-fun View.listen(listener: View.OnClickListener): () -> Unit = {
+fun View.listen(listener: View.OnClickListener): View.() -> Unit = {
     setOnClickListener(listener)
 }
 
-fun View.listen(listener: View.OnFocusChangeListener): () -> Unit = {
+fun View.listen(listener: View.OnFocusChangeListener): View.() -> Unit = {
     onFocusChangeListener = listener
 }
 
-fun View.listen(listener: View.OnTouchListener): () -> Unit = {
+fun View.listen(listener: View.OnTouchListener): View.() -> Unit = {
     setOnTouchListener(listener)
 }
 
@@ -50,43 +50,43 @@ fun View.listen(listener: View.OnTouchListener): () -> Unit = {
  * 'c' stands for 'coefficient'
  * */
 
-fun View.dpP(c: Int): () -> Unit = {
+fun View.dpP(c: Int): View.() -> Unit = {
     val value = context.dip(c)
     setPadding(value, value, value, value)
 }
 
-fun View.dpP(h: Int, v: Int): () -> Unit = {
+fun View.dpP(h: Int, v: Int): View.() -> Unit = {
     val dpHorizontal = context.dip(h)
     val dpVertical = context.dip(v)
     setPadding(dpHorizontal, dpVertical, dpHorizontal, dpVertical)
 }
 
-fun View.dpP(l: Int, t: Int, r: Int, b: Int) = {
+fun View.dpP(l: Int, t: Int, r: Int, b: Int): View.() -> Unit = {
     setPadding(context.dip(l), context.dip(t), context.dip(r), context.dip(b))
 }
 
-fun View.dpLeftP(c: Int): () -> Unit = {
+fun View.dpLeftP(c: Int): View.() -> Unit = {
     setPadding(dip(c), paddingTop, paddingRight, paddingBottom)
 }
 
-fun View.dpTopP(c: Int): () -> Unit = {
+fun View.dpTopP(c: Int): View.() -> Unit = {
     setPadding(paddingLeft, dip(c), paddingRight, paddingBottom)
 }
 
-fun View.dpRightP(c: Int): () -> Unit = {
+fun View.dpRightP(c: Int): View.() -> Unit = {
     setPadding(paddingLeft, paddingTop, dip(c), paddingBottom)
 }
 
-fun View.dpBottomP(c: Int): () -> Unit = {
+fun View.dpBottomP(c: Int): View.() -> Unit = {
     setPadding(paddingLeft, paddingTop, paddingRight, dip(c))
 }
 
-fun View.dpHorizontalP(c: Int): () -> Unit = {
+fun View.dpHorizontalP(c: Int): View.() -> Unit = {
     val value = context.dip(c)
     setPadding(value, paddingTop, value, paddingBottom)
 }
 
-fun View.dpVerticalP(c: Int): () -> Unit = {
+fun View.dpVerticalP(c: Int): View.() -> Unit = {
     val value = context.dip(c)
     setPadding(paddingLeft, value, paddingRight, value)
 }
