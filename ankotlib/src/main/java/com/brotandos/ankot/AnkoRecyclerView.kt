@@ -4,6 +4,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.ViewGroup
 import android.support.v7.widget.RecyclerView
+import android.view.ViewManager
+import org.jetbrains.anko.AnkoViewDslMarker
+import org.jetbrains.anko.custom.ankoView
 
 /**
  * @author: Brotandos
@@ -12,6 +15,7 @@ import android.support.v7.widget.RecyclerView
 val linear: RecyclerView.() -> Unit = {
     layoutManager = LinearLayoutManager(context)
 }
+
 
 fun buildAdapter (
         items: List<Any>,
@@ -36,3 +40,7 @@ fun buildAdapter (
 
 
 class DefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+
+
+fun ViewManager.recyclerView (vararg initializations: (@AnkoViewDslMarker RecyclerView).() -> Unit)
+= ankoView({ RecyclerView(it) }, theme = 0) { for(init in initializations) init() }

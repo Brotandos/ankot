@@ -21,7 +21,7 @@ fun ViewManager.textView(
         text: CharSequence?,
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ): android.widget.TextView
-        = ankoView({ TextView(it) }, theme = 0) {
+= ankoView({ TextView(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
