@@ -1,5 +1,6 @@
 package com.brotandos.ankot
 
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.ViewGroup
 import android.support.v7.widget.RecyclerView
@@ -8,6 +9,10 @@ import android.support.v7.widget.RecyclerView
  * @author: Brotandos
  * @date: 22.02.2018.
  */
+val linear: RecyclerView.() -> Unit = {
+    layoutManager = LinearLayoutManager(context)
+}
+
 fun buildAdapter (
         items: List<Any>,
         onCreateHolder: (ViewGroup?, Int) -> RecyclerView.ViewHolder

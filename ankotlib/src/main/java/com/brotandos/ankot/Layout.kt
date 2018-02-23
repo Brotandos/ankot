@@ -18,12 +18,18 @@ import org.jetbrains.anko.custom.ankoView
 
     inline val center: .LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
-    inline val centerHorizontal: .LayoutParams.() -> Unit
+    inline val greenwich: .LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL }
-    inline val centerVertical: .LayoutParams.() -> Unit
+    inline val equator: .LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL }
-    inline val centerEnd: .LayoutParams.() -> Unit
+    inline val east: .LayoutParams.() -> Unit
+        get() = { gravity = Gravity.END }
+    inline val west: .LayoutParams.() -> Unit
+        get() = { gravity = Gravity.START }
+    inline val centerEast: .LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.END }
+    inline val centerWest: .LayoutParams.() -> Unit
+        get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.START}
     inline val submissive: .LayoutParams.() -> Unit
         get() = { width = wrapContent; height = wrapContent }
     inline val row: .LayoutParams.() -> Unit

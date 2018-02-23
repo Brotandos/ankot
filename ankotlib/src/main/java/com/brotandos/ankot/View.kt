@@ -29,6 +29,21 @@ val disabled: View.() -> Unit = {
 }
 
 /**
+ * Listeners setting functions
+ * */
+fun View.listen(listener: View.OnClickListener): () -> Unit = {
+    setOnClickListener(listener)
+}
+
+fun View.listen(listener: View.OnFocusChangeListener): () -> Unit = {
+    onFocusChangeListener = listener
+}
+
+fun View.listen(listener: View.OnTouchListener): () -> Unit = {
+    setOnTouchListener(listener)
+}
+
+/**
  * Padding settings functions
  * 'dp' stands for 'dip'
  * 'p' stands for 'padding'

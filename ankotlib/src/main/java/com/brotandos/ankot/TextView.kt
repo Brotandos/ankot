@@ -61,3 +61,7 @@ fun TextView.text(size: Float): () -> Unit = {
 fun TextView.text(color: Int): () -> Unit = {
     textColor = color
 }
+
+fun TextView.hint(hint: CharSequence): () -> Unit = {
+    this.hint = hint
+}
