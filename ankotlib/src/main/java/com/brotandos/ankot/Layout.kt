@@ -15,7 +15,6 @@ import org.jetbrains.anko.custom.ankoView
  */
 
 /*
-
     inline val center: .LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
     inline val greenwich: .LayoutParams.() -> Unit
@@ -85,12 +84,18 @@ import org.jetbrains.anko.custom.ankoView
 class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
     inline val center: FrameLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
-    inline val centerHorizontal: FrameLayout.LayoutParams.() -> Unit
+    inline val greenwich: FrameLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL }
-    inline val centerVertical: FrameLayout.LayoutParams.() -> Unit
+    inline val equator: FrameLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL }
-    inline val centerEnd: FrameLayout.LayoutParams.() -> Unit
+    inline val east: FrameLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.END }
+    inline val west: FrameLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.START }
+    inline val centerEast: FrameLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.END }
+    inline val centerWest: FrameLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.START}
     inline val submissive: FrameLayout.LayoutParams.() -> Unit
         get() = { width = wrapContent; height = wrapContent }
     inline val row: FrameLayout.LayoutParams.() -> Unit
@@ -152,12 +157,18 @@ fun ViewManager.ankoFrame(vararg initializations: (@AnkoViewDslMarker AnkoFrameL
 class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
     inline val center: LinearLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
-    inline val centerHorizontal: LinearLayout.LayoutParams.() -> Unit
+    inline val greenwich: LinearLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL }
-    inline val centerVertical: LinearLayout.LayoutParams.() -> Unit
+    inline val equator: LinearLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL }
-    inline val centerEnd: LinearLayout.LayoutParams.() -> Unit
+    inline val east: LinearLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.END }
+    inline val west: LinearLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.START }
+    inline val centerEast: LinearLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.END }
+    inline val centerWest: LinearLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.START}
     inline val submissive: LinearLayout.LayoutParams.() -> Unit
         get() = { width = wrapContent; height = wrapContent }
     inline val row: LinearLayout.LayoutParams.() -> Unit
