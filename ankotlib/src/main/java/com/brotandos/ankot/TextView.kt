@@ -70,3 +70,22 @@ fun text(color: Int): TextView.() -> Unit = {
 fun hint(hint: CharSequence): TextView.() -> Unit = {
     this.hint = hint
 }
+
+/**
+ * Icon setting functions
+ * */
+fun icLeft(iconRes: Int): TextView.() -> Unit = {
+    setCompoundDrawablesWithIntrinsicBounds(iconRes, 0, 0, 0)
+}
+
+fun icRight(iconRes: Int): TextView.() -> Unit = {
+    setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRes, 0)
+}
+
+fun icLeftRight(leftIcon: Int, rightIcon: Int): TextView.() -> Unit = {
+    setCompoundDrawablesWithIntrinsicBounds(leftIcon, 0, rightIcon, 0)
+}
+
+fun icTopRight(topIcon: Int, rightIcon: Int): TextView.() -> Unit = {
+    setCompoundDrawablesWithIntrinsicBounds(0, topIcon, rightIcon, 0)
+}

@@ -1,6 +1,7 @@
 package com.brotandos.ankot
 
 import android.view.Gravity
+import android.view.ViewManager
 import android.widget.LinearLayout
 
 /**
