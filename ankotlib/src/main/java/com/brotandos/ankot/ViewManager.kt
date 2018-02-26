@@ -91,7 +91,12 @@ fun ViewManager.ankoHorizontal(vararg initializations: (@AnkoViewDslMarker AnkoL
     orientation = android.widget.LinearLayout.HORIZONTAL
 }
 
-inline fun ViewManager.navView(vararg initializations: (@AnkoViewDslMarker android.support.design.widget.NavigationView).() -> Unit) : android.support.design.widget.NavigationView
+fun ViewManager.navView(vararg initializations: (@AnkoViewDslMarker android.support.design.widget.NavigationView).() -> Unit) : android.support.design.widget.NavigationView
 = ankoView({ android.support.design.widget.NavigationView(it) }, 0) {
+    for (init in initializations) init()
+}
+
+fun ViewManager.ankoList(vararg initializations: (@AnkoViewDslMarker android.support.v7.widget.RecyclerView).() -> Unit): android.support.v7.widget.RecyclerView
+= ankoView({ android.support.v7.widget.RecyclerView(it) }, 0) {
     for (init in initializations) init()
 }
