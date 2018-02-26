@@ -1,5 +1,6 @@
 package com.brotandos.ankot
 
+import android.support.design.widget.NavigationView
 import android.view.ViewManager
 import android.widget.Button
 import android.widget.EditText
@@ -93,4 +94,9 @@ fun ViewManager.ankoHorizontal(vararg initializations: (@AnkoViewDslMarker AnkoL
 = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     for (init in initializations) init()
     orientation = LinearLayout.HORIZONTAL
+}
+
+inline fun ViewManager.navView(vararg initializations: (@AnkoViewDslMarker android.support.design.widget.NavigationView).() -> Unit) : android.support.design.widget.NavigationView
+= ankoView({ NavigationView(it) }, 0) {
+    for (init in initializations) init()
 }
