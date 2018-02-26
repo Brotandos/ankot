@@ -41,6 +41,14 @@ val singleLine: TextView.() -> Unit = {
     singleLine = true
 }
 
+val textInEnd: TextView.() -> Unit = {
+    textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+}
+
+val textInCenter: TextView.() -> Unit = {
+    textAlignment = View.TEXT_ALIGNMENT_CENTER
+}
+
 fun text(size: Float): TextView.() -> Unit = {
     textSize = dip(size).toFloat()
 }

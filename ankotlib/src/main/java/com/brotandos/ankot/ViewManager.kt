@@ -16,7 +16,7 @@ fun ViewManager.textView(
         text: CharSequence?,
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ): android.widget.TextView
-        = ankoView({ TextView(it) }, theme = 0) {
+= ankoView({ TextView(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
@@ -25,7 +25,7 @@ fun ViewManager.textView(
         text: Int,
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ): android.widget.TextView
-        = ankoView({ TextView(it) }, theme = 0) {
+= ankoView({ TextView(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
@@ -34,13 +34,13 @@ fun ViewManager.textView(
 fun ViewManager.editText(
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ) : EditText
-        = ankoView({ EditText(it) }, theme = 0) { for (init in initializations) init() }
+= ankoView({ EditText(it) }, theme = 0) { for (init in initializations) init() }
 
 fun ViewManager.editText(
         text: CharSequence?,
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ): android.widget.TextView
-        = ankoView({ EditText(it) }, theme = 0) {
+= ankoView({ EditText(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
@@ -49,7 +49,7 @@ fun ViewManager.editText(
         text: Int,
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ): android.widget.TextView
-        = ankoView({ EditText(it) }, theme = 0) {
+= ankoView({ EditText(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
@@ -65,32 +65,32 @@ fun ViewManager.button (
 
 
 inline fun ViewManager.ankoFrame(init: (@AnkoViewDslMarker AnkoFrameLayout).() -> Unit): android.widget.FrameLayout
-        = ankoView({ AnkoFrameLayout(it) }, theme = 0) { init() }
+= ankoView({ AnkoFrameLayout(it) }, theme = 0) { init() }
 
 fun ViewManager.ankoFrame(vararg initializations: (@AnkoViewDslMarker AnkoFrameLayout).() -> Unit): android.widget.FrameLayout
-        = ankoView({ AnkoFrameLayout(it) }, theme = 0) { for (init in initializations) init() }
+= ankoView({ AnkoFrameLayout(it) }, theme = 0) { for (init in initializations) init() }
 
 
 inline fun ViewManager.ankoVertical(init: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-        = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
+= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     init()
     orientation = LinearLayout.VERTICAL
 }
 
 fun ViewManager.ankoVertical(vararg initializations: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-        = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
+= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     for (init in initializations) init()
     orientation = LinearLayout.VERTICAL
 }
 
 inline fun ViewManager.ankoHorizontal(init: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-        = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
+= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     init()
     orientation = LinearLayout.HORIZONTAL
 }
 
 fun ViewManager.ankoHorizontal(vararg initializations: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-        = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
+= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     for (init in initializations) init()
     orientation = LinearLayout.HORIZONTAL
 }
