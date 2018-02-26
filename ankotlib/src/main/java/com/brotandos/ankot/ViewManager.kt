@@ -1,11 +1,6 @@
 package com.brotandos.ankot
 
-import android.support.design.widget.NavigationView
 import android.view.ViewManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
 import org.jetbrains.anko.AnkoViewDslMarker
 import org.jetbrains.anko.custom.ankoView
 
@@ -17,7 +12,7 @@ fun ViewManager.textView(
         text: CharSequence?,
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ): android.widget.TextView
-= ankoView({ TextView(it) }, theme = 0) {
+= ankoView({ android.widget.TextView(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
@@ -26,31 +21,31 @@ fun ViewManager.textView(
         text: Int,
         vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
 ): android.widget.TextView
-= ankoView({ TextView(it) }, theme = 0) {
+= ankoView({ android.widget.TextView(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
 
 
 fun ViewManager.editText(
-        vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
-) : EditText
-= ankoView({ EditText(it) }, theme = 0) { for (init in initializations) init() }
+        vararg initializations: (@AnkoViewDslMarker android.widget.EditText).() -> Unit
+) : android.widget.EditText
+= ankoView({ android.widget.EditText(it) }, theme = 0) { for (init in initializations) init() }
 
 fun ViewManager.editText(
         text: CharSequence?,
-        vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
-): android.widget.TextView
-= ankoView({ EditText(it) }, theme = 0) {
+        vararg initializations: (@AnkoViewDslMarker android.widget.EditText).() -> Unit
+): android.widget.EditText
+= ankoView({ android.widget.EditText(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
 
 fun ViewManager.editText(
         text: Int,
-        vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
-): android.widget.TextView
-= ankoView({ EditText(it) }, theme = 0) {
+        vararg initializations: (@AnkoViewDslMarker android.widget.EditText).() -> Unit
+): android.widget.EditText
+= ankoView({ android.widget.EditText(it) }, theme = 0) {
     for (init in initializations) init()
     setText(text)
 }
@@ -59,7 +54,7 @@ fun ViewManager.editText(
 fun ViewManager.button (
         text: CharSequence?,
         vararg initializations: (@AnkoViewDslMarker android.widget.Button).() -> Unit
-) : android.widget.Button = ankoView({ Button(it) }, 0) {
+) : android.widget.Button = ankoView({ android.widget.Button(it) }, 0) {
     for (init in initializations) init()
     setText(text)
 }
@@ -75,28 +70,28 @@ fun ViewManager.ankoFrame(vararg initializations: (@AnkoViewDslMarker AnkoFrameL
 inline fun ViewManager.ankoVertical(init: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
 = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     init()
-    orientation = LinearLayout.VERTICAL
+    orientation = android.widget.LinearLayout.VERTICAL
 }
 
 fun ViewManager.ankoVertical(vararg initializations: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
 = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     for (init in initializations) init()
-    orientation = LinearLayout.VERTICAL
+    orientation = android.widget.LinearLayout.VERTICAL
 }
 
 inline fun ViewManager.ankoHorizontal(init: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
 = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     init()
-    orientation = LinearLayout.HORIZONTAL
+    orientation = android.widget.LinearLayout.HORIZONTAL
 }
 
 fun ViewManager.ankoHorizontal(vararg initializations: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
 = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     for (init in initializations) init()
-    orientation = LinearLayout.HORIZONTAL
+    orientation = android.widget.LinearLayout.HORIZONTAL
 }
 
 inline fun ViewManager.navView(vararg initializations: (@AnkoViewDslMarker android.support.design.widget.NavigationView).() -> Unit) : android.support.design.widget.NavigationView
-= ankoView({ NavigationView(it) }, 0) {
+= ankoView({ android.support.design.widget.NavigationView(it) }, 0) {
     for (init in initializations) init()
 }
