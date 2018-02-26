@@ -39,7 +39,7 @@ fun Context.createMessageSingle(call: Call<Void>) : Single<String>
 }
 
 fun Context.attribute(value : Int) : TypedValue {
-    var ret = TypedValue()
+    val ret = TypedValue()
     theme.resolveAttribute(value, ret, true)
     return ret
 }

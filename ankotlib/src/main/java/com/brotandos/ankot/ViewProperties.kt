@@ -2,6 +2,7 @@ package com.brotandos.ankot
 
 import android.graphics.drawable.Drawable
 import android.view.View
+import org.jetbrains.anko.backgroundResource
 import org.jetbrains.anko.dip
 
 /**
@@ -34,6 +35,10 @@ val disabled: View.() -> Unit = {
  * */
 fun View.bg(drawable: Drawable): View.() -> Unit = {
     background = drawable
+}
+
+fun View.bg(res: Int): View.() -> Unit = {
+    backgroundResource = res
 }
 
 /**

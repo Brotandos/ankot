@@ -17,24 +17,6 @@ import org.jetbrains.anko.textColor
  * @author: Brotandos
  * @date: 22.02.2018.
  */
-fun ViewManager.textView(
-        text: CharSequence?,
-        vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
-): android.widget.TextView
-= ankoView({ TextView(it) }, theme = 0) {
-    for (init in initializations) init()
-    setText(text)
-}
-
-fun ViewManager.textView(
-        text: Int,
-        vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
-): android.widget.TextView
-        = ankoView({ TextView(it) }, theme = 0) {
-    for (init in initializations) init()
-    setText(text)
-}
-
 val underlined: TextView.() -> Unit = {
     paintFlags = Paint.UNDERLINE_TEXT_FLAG
 }

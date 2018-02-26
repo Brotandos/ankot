@@ -168,12 +168,6 @@ class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
     }
 }
 
-inline fun ViewManager.ankoFrame(init: (@AnkoViewDslMarker AnkoFrameLayout).() -> Unit): android.widget.FrameLayout
-= ankoView({ AnkoFrameLayout(it) }, theme = 0) { init() }
-
-fun ViewManager.ankoFrame(vararg initializations: (@AnkoViewDslMarker AnkoFrameLayout).() -> Unit): android.widget.FrameLayout
-= ankoView({ AnkoFrameLayout(it) }, theme = 0) { for (init in initializations) init() }
-
 class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
     inline val center: LinearLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
@@ -257,28 +251,4 @@ class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
         }
         return this
     }
-}
-
-inline fun ViewManager.ankoVertical(init: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
-    init()
-    orientation = LinearLayout.VERTICAL
-}
-
-fun ViewManager.ankoVertical(vararg initializations: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
-    for (init in initializations) init()
-    orientation = LinearLayout.VERTICAL
-}
-
-inline fun ViewManager.ankoHorizontal(init: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
-    init()
-    orientation = LinearLayout.HORIZONTAL
-}
-
-fun ViewManager.ankoHorizontal(vararg initializations: (@AnkoViewDslMarker AnkoLinearLayout).() -> Unit): android.widget.LinearLayout
-= ankoView({ AnkoLinearLayout(it) }, theme = 0) {
-    for (init in initializations) init()
-    orientation = LinearLayout.HORIZONTAL
 }
