@@ -41,6 +41,10 @@ val singleLine: TextView.() -> Unit = {
     singleLine = true
 }
 
+val multiLine: TextView.() -> Unit = {
+    singleLine = false
+}
+
 val textInEnd: TextView.() -> Unit = {
     textAlignment = View.TEXT_ALIGNMENT_TEXT_END
 }

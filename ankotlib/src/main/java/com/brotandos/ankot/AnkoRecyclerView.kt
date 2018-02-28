@@ -16,6 +16,13 @@ val linear: RecyclerView.() -> Unit = {
     layoutManager = LinearLayoutManager(context)
 }
 
+/**
+ * WARNING, must be called after layout manager set
+ * */
+val itemPrefetchDisabled: RecyclerView.() -> Unit = {
+    layoutManager.isItemPrefetchEnabled = false
+}
+
 
 fun buildAdapter (
         items: List<Any>,
