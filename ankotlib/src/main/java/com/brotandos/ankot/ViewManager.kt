@@ -60,6 +60,15 @@ fun ViewManager.button (
 }
 
 
+fun ViewManager.imageView (
+        imageResource: Int,
+        vararg initializations: (@AnkoViewDslMarker android.widget.ImageView).() -> Unit
+) : android.widget.ImageView = ankoView({ android.widget.ImageView(it) }, 0) {
+    for (init in initializations) init()
+    setImageResource(imageResource)
+}
+
+
 inline fun ViewManager.ankoFrame(init: (@AnkoViewDslMarker AnkoFrameLayout).() -> Unit): android.widget.FrameLayout
 = ankoView({ AnkoFrameLayout(it) }, theme = 0) { init() }
 
@@ -89,6 +98,11 @@ fun ViewManager.ankoHorizontal(vararg initializations: (@AnkoViewDslMarker AnkoL
 = ankoView({ AnkoLinearLayout(it) }, theme = 0) {
     for (init in initializations) init()
     orientation = android.widget.LinearLayout.HORIZONTAL
+}
+
+fun ViewManager.ankoRelative(vararg initializations: (@AnkoViewDslMarker AnkoRelativeLayout).() -> Unit): android.widget.RelativeLayout
+= ankoView({ AnkoRelativeLayout(it) }, 0) {
+    for (init in initializations) init()
 }
 
 fun ViewManager.navView(vararg initializations: (@AnkoViewDslMarker android.support.design.widget.NavigationView).() -> Unit) : android.support.design.widget.NavigationView

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewManager
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import org.jetbrains.anko.*
 import org.jetbrains.anko.custom.ankoView
 
@@ -83,7 +84,7 @@ import org.jetbrains.anko.custom.ankoView
         this.marginEnd = dip(c)
     }
 
-    fun <T: view> T.lparams(vararg params: .LayoutParams.() -> Unit) : T {
+    fun <T: View> T.lparams(vararg params: .LayoutParams.() -> Unit) : T {
         layoutParams = .LayoutParams(wrapContent, wrapContent).apply {
             for (param in params) param()
         }
@@ -247,6 +248,69 @@ class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
     fun <T: View> T.lparams(weight: Float, vararg params: LinearLayout.LayoutParams.() -> Unit) : T {
         layoutParams = LinearLayout.LayoutParams(wrapContent, wrapContent).apply {
             this.weight = weight
+            for (param in params) param()
+        }
+        return this
+    }
+}
+
+
+class AnkoRelativeLayout(ctx: Context) : _RelativeLayout(ctx) {
+    inline val submissive: RelativeLayout.LayoutParams.() -> Unit
+        get() = { width = wrapContent; height = wrapContent }
+    inline val row: RelativeLayout.LayoutParams.() -> Unit
+        get() = { width = matchParent; height = wrapContent }
+    inline val column: RelativeLayout.LayoutParams.() -> Unit
+        get() = { width = wrapContent; height = matchParent }
+    inline val dominant: RelativeLayout.LayoutParams.() -> Unit
+        get() = { width = matchParent; height = matchParent }
+    /**
+     * Margin setting functions
+     * 'dp' stands for 'dip'
+     * 'm' stands for 'margin'
+     * 't' stands for 'top'
+     * 'l' stands for 'left'
+     * 'r' stands for 'right'
+     * 'b' stands for 'bottom'
+     * 'e' stands for 'end'
+     * 's' stands for 'start'
+     * 'c' stands for 'coefficient'
+     * */
+    fun dpM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        val value = dip(c)
+        leftMargin = value
+        rightMargin = value
+        topMargin = value
+        bottomMargin = value
+    }
+    fun dpM(l: Int, t: Int, r: Int, b: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        setMargins(dip(l), dip(t), dip(r), dip(b))
+    }
+    fun dpHorizontalM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        val value = dip(c)
+        marginStart = value
+        marginEnd = value
+    }
+    fun dpVerticalM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        val value = dip(c)
+        topMargin = value
+        bottomMargin = value
+    }
+    fun dpTopM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        this.topMargin = dip(c)
+    }
+    fun dpBottomM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        this.bottomMargin = dip(c)
+    }
+    fun dpStartM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        this.marginStart = dip(c)
+    }
+    fun dpEndM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        this.marginEnd = dip(c)
+    }
+
+    fun <T: View> T.lparams(vararg params: RelativeLayout.LayoutParams.() -> Unit) : T {
+        layoutParams = RelativeLayout.LayoutParams(wrapContent, wrapContent).apply {
             for (param in params) param()
         }
         return this
