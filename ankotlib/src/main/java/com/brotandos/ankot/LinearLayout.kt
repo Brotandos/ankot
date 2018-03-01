@@ -19,3 +19,11 @@ val contentEquator: LinearLayout.() -> Unit = {
 val contentGreenwich: LinearLayout.() -> Unit = {
     gravity = Gravity.CENTER_HORIZONTAL
 }
+
+val horizontal: LinearLayout.() -> Unit = {
+    orientation = LinearLayout.HORIZONTAL
+}
+
+val vertical: LinearLayout.() -> Unit = {
+    orientation = LinearLayout.VERTICAL
+}
