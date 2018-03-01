@@ -1,6 +1,7 @@
 package com.brotandos.ankot
 
 import android.view.ViewManager
+import android.widget.RadioGroup
 import org.jetbrains.anko.AnkoViewDslMarker
 import org.jetbrains.anko.custom.ankoView
 
@@ -112,6 +113,11 @@ fun ViewManager.ankoRelative(init: (@AnkoViewDslMarker AnkoRelativeLayout).() ->
 
 fun ViewManager.ankoRelative(vararg initializations: (@AnkoViewDslMarker AnkoRelativeLayout).() -> Unit): android.widget.RelativeLayout
 = ankoView({ AnkoRelativeLayout(it) }, 0) {
+    for (init in initializations) init()
+}
+
+fun ViewManager.radioGroup(vararg initializations: (@AnkoViewDslMarker RadioGroup).() -> Unit): android.widget.RadioGroup
+= ankoView({ android.widget.RadioGroup(it) }, 0) {
     for (init in initializations) init()
 }
 
