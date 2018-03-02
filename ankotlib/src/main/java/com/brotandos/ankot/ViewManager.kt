@@ -52,6 +52,30 @@ fun ViewManager.editText(
 }
 
 
+fun ViewManager.suggestEdit (
+        vararg initializations: (@AnkoViewDslMarker android.widget.AutoCompleteTextView).() -> Unit
+) : android.widget.AutoCompleteTextView
+= ankoView({ android.widget.AutoCompleteTextView(it) }, 0) { for (init in initializations) init() }
+
+fun ViewManager.suggestEdit (
+        text: CharSequence,
+        vararg initializations: (@AnkoViewDslMarker android.widget.AutoCompleteTextView).() -> Unit
+) : android.widget.AutoCompleteTextView
+= ankoView({ android.widget.AutoCompleteTextView(it) }, 0) {
+    for (init in initializations) init()
+    setText(text)
+}
+
+fun ViewManager.suggestEdit (
+        textRes: Int,
+        vararg initializations: (@AnkoViewDslMarker android.widget.AutoCompleteTextView).() -> Unit
+): android.widget.AutoCompleteTextView
+= ankoView({ android.widget.AutoCompleteTextView(it) }, 0) {
+    for (init in initializations) init()
+    setText(textRes)
+}
+
+
 fun ViewManager.button (
         text: CharSequence?,
         vararg initializations: (@AnkoViewDslMarker android.widget.Button).() -> Unit
