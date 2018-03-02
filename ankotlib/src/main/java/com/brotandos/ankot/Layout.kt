@@ -30,6 +30,10 @@ import org.jetbrains.anko.custom.ankoView
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.END }
     inline val centerWest: .LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.START}
+    inline val north: .LayoutParams.() -> Unit
+        get() = { gravity = Gravity.TOP }
+    inline val south: .LayoutParams.() -> Unit
+        get() = { gravity = Gravity.BOTTOM }
     inline val submissive: .LayoutParams.() -> Unit
         get() = { width = wrapContent; height = wrapContent }
     inline val row: .LayoutParams.() -> Unit
@@ -107,6 +111,10 @@ class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.END }
     inline val centerWest: FrameLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.START}
+    inline val north: FrameLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.TOP }
+    inline val south: FrameLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.BOTTOM }
     inline val submissive: FrameLayout.LayoutParams.() -> Unit
         get() = { width = wrapContent; height = wrapContent }
     inline val row: FrameLayout.LayoutParams.() -> Unit
@@ -184,6 +192,10 @@ class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.END }
     inline val centerWest: LinearLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_VERTICAL or Gravity.START}
+    inline val north: LinearLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.TOP }
+    inline val south: LinearLayout.LayoutParams.() -> Unit
+        get() = { gravity = Gravity.BOTTOM }
     inline val submissive: LinearLayout.LayoutParams.() -> Unit
         get() = { width = wrapContent; height = wrapContent }
     inline val row: LinearLayout.LayoutParams.() -> Unit
