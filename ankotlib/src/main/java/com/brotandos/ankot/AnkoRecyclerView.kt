@@ -25,6 +25,7 @@ val itemPrefetchDisabled: RecyclerView.() -> Unit = {
 }
 
 
+@Deprecated("Deprecated due to code design reasons")
 fun buildAdapter (
         items: List<Any>,
         onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder
@@ -37,8 +38,31 @@ fun buildAdapter (
 
 
 fun buildAdapter (
+        onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder,
+        items: List<Any>
+) = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = onCreateHolder(parent, viewType)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
+    override fun getItemCount() = items.size
+    override fun getItemViewType(position: Int) = position
+}
+
+
+@Deprecated("Deprecated due to code design reasons")
+fun buildAdapter (
         itemCount: () -> Int,
         onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder
+) = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = onCreateHolder(parent, viewType)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
+    override fun getItemCount() = itemCount()
+    override fun getItemViewType(position: Int) = position
+}
+
+
+fun buildAdapter (
+        onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder,
+        itemCount: () -> Int
 ) = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = onCreateHolder(parent, viewType)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
@@ -57,4 +81,4 @@ fun ViewManager.recyclerView (vararg initializations: (@AnkoViewDslMarker Recycl
 
 
 fun ViewGroup.viewHolder(init: AnkoContext<ViewGroup>.() -> Unit)
-= DefaultViewHolder(createView(init))
+= object : RecyclerView.ViewHolder(createView(init)) {}
