@@ -1,6 +1,7 @@
 package com.brotandos.ankot
 
 import android.view.ViewManager
+import android.widget.AutoCompleteTextView
 import android.widget.RadioGroup
 import org.jetbrains.anko.AnkoViewDslMarker
 import org.jetbrains.anko.custom.ankoView
@@ -26,6 +27,11 @@ fun ViewManager.textView(
     for (init in initializations) init()
     setText(text)
 }
+
+fun ViewManager.textView (
+        vararg initializations: (@AnkoViewDslMarker android.widget.TextView).() -> Unit
+): android.widget.TextView
+= ankoView({ android.widget.TextView(it) }, 0) { for (init in initializations) init() }
 
 
 fun ViewManager.editText(

@@ -3,6 +3,8 @@ package com.brotandos.ankot
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
+import android.os.Build
+import android.text.Html
 import android.text.InputType
 import android.view.View
 import android.view.ViewManager
@@ -63,6 +65,11 @@ fun text(color: Int): TextView.() -> Unit = {
 
 fun hint(hint: CharSequence): TextView.() -> Unit = {
     this.hint = hint
+}
+
+fun html(text: String): TextView.() -> Unit = {
+    this.text = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) Html.fromHtml(text)
+                else Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT)
 }
 
 /**
