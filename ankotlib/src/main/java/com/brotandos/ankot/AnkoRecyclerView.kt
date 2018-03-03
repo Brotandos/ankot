@@ -26,9 +26,9 @@ val itemPrefetchDisabled: RecyclerView.() -> Unit = {
 
 fun buildAdapter (
         items: List<Any>,
-        onCreateHolder: (ViewGroup?, Int) -> RecyclerView.ViewHolder
+        onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder
 ) = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = onCreateHolder(parent, viewType)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = onCreateHolder(parent, viewType)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
     override fun getItemCount() = items.size
     override fun getItemViewType(position: Int) = position
@@ -37,10 +37,10 @@ fun buildAdapter (
 
 fun buildAdapter (
         itemCount: () -> Int,
-        onCreateHolder: (ViewGroup?, Int) -> RecyclerView.ViewHolder
+        onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder
 ) = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = onCreateHolder(parent, viewType)
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {}
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = onCreateHolder(parent, viewType)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
     override fun getItemCount() = itemCount()
     override fun getItemViewType(position: Int) = position
 }
