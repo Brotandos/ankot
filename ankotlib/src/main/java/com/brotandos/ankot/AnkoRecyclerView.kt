@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.support.v7.widget.RecyclerView
 import android.view.ViewManager
+import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.AnkoViewDslMarker
 import org.jetbrains.anko.custom.ankoView
 
@@ -46,8 +47,14 @@ fun buildAdapter (
 }
 
 
-class DefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+class DefaultViewHolder
+@Deprecated("Due to support library update (27.1.0), use ViewGroup's extension viewHolder creation function")
+constructor(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
 fun ViewManager.recyclerView (vararg initializations: (@AnkoViewDslMarker RecyclerView).() -> Unit)
 = ankoView({ RecyclerView(it) }, theme = 0) { for(init in initializations) init() }
+
+
+fun ViewGroup.viewHolder(init: AnkoContext<ViewGroup>.() -> Unit)
+= DefaultViewHolder(createView(init))
