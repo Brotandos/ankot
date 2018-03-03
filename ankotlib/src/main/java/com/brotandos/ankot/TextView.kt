@@ -55,19 +55,19 @@ val textInCenter: TextView.() -> Unit = {
     textAlignment = View.TEXT_ALIGNMENT_CENTER
 }
 
-fun text(size: Float): TextView.() -> Unit = {
+fun <T: TextView> T.text(size: Float): TextView.() -> Unit = {
     textSize = dip(size).toFloat()
 }
 
-fun text(color: Int): TextView.() -> Unit = {
+fun <T: TextView> T.text(color: Int): TextView.() -> Unit = {
     textColor = color
 }
 
-fun hint(hint: CharSequence): TextView.() -> Unit = {
+fun <T: TextView> T.hint(hint: CharSequence): TextView.() -> Unit = {
     this.hint = hint
 }
 
-fun html(text: String): TextView.() -> Unit = {
+fun <T: TextView> T.html(text: String): TextView.() -> Unit = {
     this.text = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) Html.fromHtml(text)
                 else Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT)
 }
@@ -75,18 +75,18 @@ fun html(text: String): TextView.() -> Unit = {
 /**
  * Icon setting functions
  * */
-fun icLeft(iconRes: Int): TextView.() -> Unit = {
+fun <T: TextView> T.icLeft(iconRes: Int): TextView.() -> Unit = {
     setCompoundDrawablesWithIntrinsicBounds(iconRes, 0, 0, 0)
 }
 
-fun icRight(iconRes: Int): TextView.() -> Unit = {
+fun <T: TextView> T.icRight(iconRes: Int): TextView.() -> Unit = {
     setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRes, 0)
 }
 
-fun icLeftRight(leftIcon: Int, rightIcon: Int): TextView.() -> Unit = {
+fun <T: TextView> T.icLeftRight(leftIcon: Int, rightIcon: Int): TextView.() -> Unit = {
     setCompoundDrawablesWithIntrinsicBounds(leftIcon, 0, rightIcon, 0)
 }
 
-fun icTopRight(topIcon: Int, rightIcon: Int): TextView.() -> Unit = {
+fun <T: TextView> T.icTopRight(topIcon: Int, rightIcon: Int): TextView.() -> Unit = {
     setCompoundDrawablesWithIntrinsicBounds(0, topIcon, rightIcon, 0)
 }
