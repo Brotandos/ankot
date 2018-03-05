@@ -16,20 +16,6 @@ fun ViewGroup.createView(init: AnkoContext<ViewGroup>.() -> Unit)
         = AnkoContextImpl(context, this, false).apply(init).view
 
 
-fun ViewManager.radioButton(text: String) = radioButton { this.text = text}
-fun ViewManager.radioButton(text: String, init: (@AnkoViewDslMarker RadioButton).() -> Unit)
-= radioButton {
-    this.text = text
-    init()
-}
-
-
-fun ViewManager.radioGroup(orientation: Int, init: (@AnkoViewDslMarker _RadioGroup).() -> Unit) = radioGroup {
-    this.orientation = orientation
-    init()
-}
-
-
 inline fun <reified T: View> View.children() = childrenSequence() as Sequence<T>
 inline fun <reified T: View> View.filteredChildren() = childrenSequence().filter { it is T } as Sequence<T>
 

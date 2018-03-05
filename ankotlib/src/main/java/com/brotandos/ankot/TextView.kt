@@ -96,3 +96,7 @@ fun icLeftRight(leftIcon: Int, rightIcon: Int): TextView.() -> Unit = {
 fun icTopRight(topIcon: Int, rightIcon: Int): TextView.() -> Unit = {
     setCompoundDrawablesWithIntrinsicBounds(0, topIcon, rightIcon, 0)
 }
+
+fun dpIconP(c: Int): TextView.() -> Unit = {
+    compoundDrawablePadding = dip(c)
+}

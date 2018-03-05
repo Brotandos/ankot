@@ -43,7 +43,7 @@ fun <T> forItems (
 }
 
 
-fun <T> itemView (
+fun itemView (
         holderView: AnkoContext<ViewGroup>.(Int) -> Unit,
         itemCount: () -> Int
 ) : RecyclerView.() -> Unit = {
@@ -52,7 +52,7 @@ fun <T> itemView (
         override fun getItemCount() = itemCount()
         override fun getItemViewType(position: Int) = position
         override fun onCreateViewHolder(parent: ViewGroup, position: Int)
-                = object : RecyclerView.ViewHolder(
+        = object : RecyclerView.ViewHolder(
                 AnkoContextImpl(context, parent, false)
                         .apply { holderView(position) }.view
         ) {}
