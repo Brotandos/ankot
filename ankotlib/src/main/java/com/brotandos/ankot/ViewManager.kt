@@ -1,5 +1,6 @@
 package com.brotandos.ankot
 
+import android.support.v7.widget.RecyclerView
 import android.view.ViewManager
 import android.widget.AutoCompleteTextView
 import android.widget.RadioGroup
@@ -159,4 +160,12 @@ fun ViewManager.navView(vararg initializations: (@AnkoViewDslMarker android.supp
 fun ViewManager.ankoList(vararg initializations: (@AnkoViewDslMarker android.support.v7.widget.RecyclerView).() -> Unit): android.support.v7.widget.RecyclerView
 = ankoView({ android.support.v7.widget.RecyclerView(it) }, 0) {
     for (init in initializations) init()
+}
+
+fun ViewManager.ankoList (
+        vararg initializations: (@AnkoViewDslMarker RecyclerView).() -> Unit,
+        additionalInit: (@AnkoViewDslMarker RecyclerView).() -> Unit
+) = ankoView({ RecyclerView(it) }, theme = 0) {
+    for(init in initializations) init()
+    additionalInit()
 }

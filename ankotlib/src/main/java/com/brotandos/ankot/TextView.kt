@@ -73,8 +73,9 @@ fun html(text: String): TextView.() -> Unit = {
 }
 
 fun <T: TextView> T.html(text: String) {
-    this.text = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) Html.fromHtml(text)
-    else Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT)
+    this.text =
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) Html.fromHtml(text)
+            else Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT)
 }
 
 /**

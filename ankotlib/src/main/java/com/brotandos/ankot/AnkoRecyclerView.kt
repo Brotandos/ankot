@@ -43,7 +43,24 @@ fun <T> forItems (
 }
 
 
-@Deprecated("Deprecated due to code design reasons")
+fun <T> itemView (
+        holderView: AnkoContext<ViewGroup>.(Int) -> Unit,
+        itemCount: () -> Int
+) : RecyclerView.() -> Unit = {
+    adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
+        override fun getItemCount() = itemCount()
+        override fun getItemViewType(position: Int) = position
+        override fun onCreateViewHolder(parent: ViewGroup, position: Int)
+                = object : RecyclerView.ViewHolder(
+                AnkoContextImpl(context, parent, false)
+                        .apply { holderView(position) }.view
+        ) {}
+    }
+}
+
+
+@Deprecated("Use forItems instead")
 fun buildAdapter (
         items: List<Any>,
         onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder
@@ -55,6 +72,7 @@ fun buildAdapter (
 }
 
 
+@Deprecated("Use forItems instead")
 fun buildAdapter (
         onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder,
         items: List<Any>
@@ -66,7 +84,7 @@ fun buildAdapter (
 }
 
 
-@Deprecated("Deprecated due to code design reasons")
+@Deprecated("Use itemView instead")
 fun buildAdapter (
         itemCount: () -> Int,
         onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder
@@ -78,6 +96,7 @@ fun buildAdapter (
 }
 
 
+@Deprecated("Use itemView instead")
 fun buildAdapter (
         onCreateHolder: (ViewGroup, Int) -> RecyclerView.ViewHolder,
         itemCount: () -> Int
@@ -94,10 +113,12 @@ class DefaultViewHolder
 constructor(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
+@Deprecated("Use ankoList instead")
 fun ViewManager.recyclerView (vararg initializations: (@AnkoViewDslMarker RecyclerView).() -> Unit)
 = ankoView({ RecyclerView(it) }, theme = 0) { for(init in initializations) init() }
 
 
+@Deprecated("Use ankoList instead")
 fun ViewManager.recyclerView (
         vararg initializations: (@AnkoViewDslMarker RecyclerView).() -> Unit,
         additionalInit: (@AnkoViewDslMarker RecyclerView).() -> Unit
@@ -107,5 +128,6 @@ fun ViewManager.recyclerView (
 }
 
 
+@Deprecated("Use forItems or itemView functions for adapter initializing")
 fun ViewGroup.viewHolder(init: AnkoContext<ViewGroup>.() -> Unit)
 = object : RecyclerView.ViewHolder(createView(init)) {}
