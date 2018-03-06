@@ -394,3 +394,29 @@ fun ViewManager.ankoList (
     for(init in initializations) init()
     additionalInit()
 }
+
+inline fun ViewManager.gridList (
+        spanCount: Int = 2,
+        init: (@AnkoViewDslMarker GridRecyclerView).() -> Unit
+) : GridRecyclerView = ankoView( {GridRecyclerView(it)}, 0 ) {
+    layoutManager = android.support.v7.widget.GridLayoutManager(context, spanCount)
+    init()
+}
+
+fun ViewManager.gridList (
+        spanCount: Int = 2,
+        vararg initializations: (@AnkoViewDslMarker GridRecyclerView).() -> Unit
+) : GridRecyclerView = ankoView({ GridRecyclerView(it) }, 0) {
+    layoutManager = android.support.v7.widget.GridLayoutManager(context, spanCount)
+    initializations.forEach { it() }
+}
+
+fun ViewManager.gridList (
+        spanCount: Int = 2,
+        vararg initializations: (@AnkoViewDslMarker GridRecyclerView).() -> Unit,
+        additionalInit: (@AnkoViewDslMarker GridRecyclerView).() -> Unit
+) : GridRecyclerView = ankoView({ GridRecyclerView(it) }, 0) {
+    layoutManager = android.support.v7.widget.GridLayoutManager(context, spanCount)
+    initializations.forEach { it() }
+    additionalInit()
+}
