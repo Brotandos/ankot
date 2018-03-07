@@ -42,8 +42,8 @@ fun anim(resId: Int): RecyclerView.() -> Unit = {
     layoutAnimation = AnimationUtils.loadLayoutAnimation(context, resId)
 }
 
-fun <T> forItems (
-        items: List<T>,
+fun forItems (
+        items: List<*>,
         holderView: AnkoContext<ViewGroup>.(Int) -> Unit
 ) : RecyclerView.() -> Unit = {
     adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -73,6 +73,21 @@ fun itemView (
                         .apply { holderView(position) }.view
         ) {}
     }
+}
+
+
+fun buildAdapterFor (
+        items: List<*>,
+        itemView: AnkoContext<ViewGroup>.(Int) -> Unit
+) = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
+    override fun getItemCount() = items.size
+    override fun getItemViewType(position: Int) = position
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int)
+    = object : RecyclerView.ViewHolder (
+            AnkoContextImpl(parent.context, parent, false)
+                    .apply { itemView(position) }.view
+    ) {}
 }
 
 
