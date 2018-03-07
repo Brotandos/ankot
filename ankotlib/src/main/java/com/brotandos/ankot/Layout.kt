@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -111,6 +112,29 @@ import org.jetbrains.anko.support.v4._DrawerLayout
     }
 */
 
+/**
+ * ViewGroup extensions
+ * */
+fun <T: View> T.lp(width: Int, height: Int): T {
+    this.layoutParams = ViewGroup.LayoutParams(width, height)
+    return this
+}
+
+fun <T: View> T.lp(init: ViewGroup.LayoutParams.() -> Unit): T {
+    this.layoutParams.init()
+    return this
+}
+
+inline val submissive: ViewGroup.LayoutParams.() -> Unit
+    get() = { width = wrapContent; height = wrapContent }
+inline val row: ViewGroup.LayoutParams.() -> Unit
+    get() = { width = matchParent; height = wrapContent }
+inline val column: ViewGroup.LayoutParams.() -> Unit
+    get() = { width = wrapContent; height = matchParent }
+inline val dominant: ViewGroup.LayoutParams.() -> Unit
+    get() = { width = matchParent; height = matchParent }
+
+
 class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
     inline val center: FrameLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
@@ -206,6 +230,7 @@ class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
         return this
     }
 }
+
 
 class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
     inline val center: LinearLayout.LayoutParams.() -> Unit

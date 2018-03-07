@@ -3,8 +3,13 @@ package com.brotandos.ankot
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CompoundButton
+import android.widget.FrameLayout
 import org.jetbrains.anko.backgroundResource
 import org.jetbrains.anko.dip
+import org.jetbrains.anko.matchParent
+import org.jetbrains.anko.wrapContent
 
 /**
  * @author: Brotandos
@@ -31,6 +36,22 @@ val disabled: View.() -> Unit = {
     isEnabled = false
 }
 
+val clickable: View.() -> Unit = {
+    isClickable = true
+}
+
+val unclickable: View.() -> Unit = {
+    isClickable = false
+}
+
+val checked: CompoundButton.() -> Unit = {
+    isChecked = true
+}
+
+val unchecked: CompoundButton.() -> Unit = {
+    isChecked = false
+}
+
 /**
  * 'bg' stands for 'background'
  * */
@@ -40,10 +61,6 @@ fun bg(drawable: Drawable): View.() -> Unit = {
 
 fun bg(res: Int): View.() -> Unit = {
     backgroundResource = res
-}
-
-fun lp(width: Int, height: Int): View.() -> Unit = {
-    layoutParams = ViewGroup.LayoutParams(width, height)
 }
 
 /**
