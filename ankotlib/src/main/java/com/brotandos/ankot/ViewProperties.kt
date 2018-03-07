@@ -2,6 +2,7 @@ package com.brotandos.ankot
 
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.view.ViewGroup
 import org.jetbrains.anko.backgroundResource
 import org.jetbrains.anko.dip
 
@@ -39,6 +40,10 @@ fun bg(drawable: Drawable): View.() -> Unit = {
 
 fun bg(res: Int): View.() -> Unit = {
     backgroundResource = res
+}
+
+fun lp(width: Int, height: Int): View.() -> Unit = {
+    layoutParams = ViewGroup.LayoutParams(width, height)
 }
 
 /**
