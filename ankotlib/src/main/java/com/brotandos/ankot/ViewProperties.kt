@@ -2,14 +2,9 @@ package com.brotandos.ankot
 
 import android.graphics.drawable.Drawable
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.CompoundButton
-import android.widget.FrameLayout
 import org.jetbrains.anko.backgroundResource
 import org.jetbrains.anko.dip
-import org.jetbrains.anko.matchParent
-import org.jetbrains.anko.wrapContent
 
 /**
  * @author: Brotandos
@@ -51,6 +46,12 @@ val checked: CompoundButton.() -> Unit = {
 val unchecked: CompoundButton.() -> Unit = {
     isChecked = false
 }
+
+/**
+ * Advice: use this, if view is inside recyclerView and has onClickListener property.
+ * TODO add use example link
+ * */
+val View.index: Int get() = tag as Int
 
 /**
  * 'bg' stands for 'background'

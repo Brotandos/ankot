@@ -4,13 +4,12 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Build
+import android.text.Editable
 import android.text.Html
 import android.text.InputType
+import android.text.TextWatcher
 import android.view.View
-import android.view.ViewManager
 import android.widget.TextView
-import org.jetbrains.anko.AnkoViewDslMarker
-import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.singleLine
 import org.jetbrains.anko.textColor
@@ -99,4 +98,23 @@ fun icTopRight(topIcon: Int, rightIcon: Int): TextView.() -> Unit = {
 
 fun dpIconP(c: Int): TextView.() -> Unit = {
     compoundDrawablePadding = dip(c)
+}
+
+fun textWatcher (
+        beforeChanged: ((CharSequence?, Int, Int, Int) -> Unit)? = null,
+        onChanged: ((CharSequence?, Int, Int, Int) -> Unit)? = null,
+        afterChanged: ((Editable?) -> Unit)? = null
+) = object : TextWatcher {
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        if (beforeChanged != null) beforeChanged(s, start, count, after)
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        if (onChanged != null) onChanged(s, start, before, count)
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        if (afterChanged != null) afterChanged(s)
+    }
 }
