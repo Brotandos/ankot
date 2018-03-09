@@ -3,6 +3,8 @@ package com.brotandos.ankot
 import android.support.design.widget.NavigationView
 import android.view.animation.Animation
 import android.widget.ImageView
+import java.io.BufferedInputStream
+import java.io.ByteArrayOutputStream
 
 /**
  * @author: Brotandos
@@ -27,4 +29,14 @@ fun animationListener (
     override fun onAnimationStart(animation: Animation?) { if (onStart != null) onStart(animation) }
     override fun onAnimationRepeat(animation: Animation?) { if (onRepeat != null) onRepeat(animation) }
     override fun onAnimationEnd(animation: Animation?) { if (onEnd != null) onEnd(animation) }
+}
+
+fun BufferedInputStream.getString() : String {
+    val bos = ByteArrayOutputStream()
+    var i = this.read()
+    while (i != -1) {
+        bos.write(i)
+        i = this.read()
+    }
+    return bos.toString()
 }

@@ -2,6 +2,7 @@ package com.brotandos.ankot
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewManager
+import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import org.jetbrains.anko.AnkoViewDslMarker
@@ -254,6 +255,38 @@ fun ViewManager.imageView (
         additionalInit: (@AnkoViewDslMarker android.widget.ImageView).() -> Unit
 ) : android.widget.ImageView = ankoView({ android.widget.ImageView(it) }, 0) {
     for (init in initializations) init()
+    additionalInit()
+    setImageResource(imageResource)
+}
+
+fun ViewManager.fab (
+        imageResource: Int
+): android.support.design.widget.FloatingActionButton = ankoView({ android.support.design.widget.FloatingActionButton(it) }, 0) {
+    setImageResource(imageResource)
+}
+
+fun ViewManager.fab (
+        imageResource: Int,
+        init: (@AnkoViewDslMarker android.support.design.widget.FloatingActionButton).() -> Unit
+): android.support.design.widget.FloatingActionButton = ankoView({ android.support.design.widget.FloatingActionButton(it) }, 0) {
+    init()
+    setImageResource(imageResource)
+}
+
+fun ViewManager.fab (
+        imageResource: Int,
+        vararg initializations: (@AnkoViewDslMarker android.support.design.widget.FloatingActionButton).() -> Unit
+): android.support.design.widget.FloatingActionButton = ankoView({ android.support.design.widget.FloatingActionButton(it) }, 0) {
+    initializations.forEach { it() }
+    setImageResource(imageResource)
+}
+
+fun ViewManager.fab (
+        imageResource: Int,
+        vararg initializations: (@AnkoViewDslMarker android.support.design.widget.FloatingActionButton).() -> Unit,
+        additionalInit: (@AnkoViewDslMarker android.support.design.widget.FloatingActionButton).() -> Unit
+): android.support.design.widget.FloatingActionButton = ankoView({ android.support.design.widget.FloatingActionButton(it) }, 0) {
+    initializations.forEach { it() }
     additionalInit()
     setImageResource(imageResource)
 }
