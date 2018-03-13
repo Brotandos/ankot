@@ -292,6 +292,37 @@ fun ViewManager.fab (
 }
 
 
+fun ViewManager.checkBox (
+        vararg inits: (@AnkoViewDslMarker android.widget.CheckBox).() -> Unit
+) = ankoView({ android.widget.CheckBox(it) }, 0) { inits.forEach { it() } }
+
+fun ViewManager.checkBox (
+        vararg inits: (@AnkoViewDslMarker android.widget.CheckBox).() -> Unit,
+        init: (@AnkoViewDslMarker android.widget.CheckBox).() -> Unit
+) = ankoView({ android.widget.CheckBox(it) }, 0) {
+    inits.forEach { it() }
+    init()
+}
+
+fun ViewManager.checkBox (
+        text: CharSequence?,
+        vararg inits: (@AnkoViewDslMarker android.widget.CheckBox).() -> Unit
+) = ankoView({ android.widget.CheckBox(it) }, 0) {
+    inits.forEach { it() }
+    setText(text)
+}
+
+fun ViewManager.checkBox (
+        text: CharSequence?,
+        vararg inits: (@AnkoViewDslMarker android.widget.CheckBox).() -> Unit,
+        init: (@AnkoViewDslMarker android.widget.CheckBox).() -> Unit
+) = ankoView({ android.widget.CheckBox(it) }, 0) {
+    inits.forEach { it() }
+    init()
+    setText(text)
+}
+
+
 inline fun ViewManager.ankoFrame (init: (@AnkoViewDslMarker AnkoFrameLayout).() -> Unit): android.widget.FrameLayout
 = ankoView({ AnkoFrameLayout(it) }, theme = 0) { init() }
 

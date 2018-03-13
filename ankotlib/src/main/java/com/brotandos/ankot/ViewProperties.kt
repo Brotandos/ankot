@@ -67,16 +67,43 @@ fun bg(res: Int): View.() -> Unit = {
 /**
  * Listeners setting functions
  * */
+@Deprecated("Use invoke function instead")
 fun listen(listener: View.OnClickListener): View.() -> Unit = {
     setOnClickListener(listener)
 }
 
+@Deprecated("Use invoke function instead")
 fun listen(listener: View.OnFocusChangeListener): View.() -> Unit = {
     onFocusChangeListener = listener
 }
 
+@Deprecated("Use invoke function instead")
 fun listen(listener: View.OnTouchListener): View.() -> Unit = {
     setOnTouchListener(listener)
+}
+
+operator fun View.OnClickListener.invoke(): View.() -> Unit = {
+    setOnClickListener(this@invoke)
+}
+
+operator fun View.OnFocusChangeListener.invoke(): View.() -> Unit = {
+    onFocusChangeListener = this@invoke
+}
+
+operator fun View.OnTouchListener.invoke(): View.() -> Unit = {
+    setOnTouchListener(this@invoke)
+}
+
+operator fun Int.invoke(): View.() -> Unit = {
+    id = this@invoke
+}
+
+fun tag(t: Any): View.() -> Unit = {
+    tag = t
+}
+
+operator fun Drawable.invoke(): View.() -> Unit = {
+    background = this@invoke
 }
 
 /**

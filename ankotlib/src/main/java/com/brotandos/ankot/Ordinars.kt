@@ -2,6 +2,7 @@ package com.brotandos.ankot
 
 import android.support.design.widget.NavigationView
 import android.view.animation.Animation
+import android.widget.EditText
 import android.widget.ImageView
 import java.io.BufferedInputStream
 import java.io.ByteArrayOutputStream
@@ -40,3 +41,5 @@ fun BufferedInputStream.getString() : String {
     }
     return bos.toString()
 }
+
+inline val EditText.textVal: String get() = text.toString()
