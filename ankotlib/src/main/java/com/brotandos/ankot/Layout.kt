@@ -17,6 +17,8 @@ import org.jetbrains.anko.support.v4._DrawerLayout
  */
 
 /*
+    inline val Int.dp: Int
+        get() = context.dip(this)
     inline val center: .LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
     inline val greenwich: .LayoutParams.() -> Unit
@@ -159,7 +161,9 @@ inline val dominant: ViewGroup.LayoutParams.() -> Unit
     get() = { width = matchParent; height = matchParent }
 
 
-class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
+open class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
+    inline val Int.dp: Int
+        get() = context.dip(this)
     inline val center: FrameLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
     inline val greenwich: FrameLayout.LayoutParams.() -> Unit
@@ -293,7 +297,9 @@ class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
 }
 
 
-class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
+open class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
+    inline val Int.dp: Int
+        get() = context.dip(this)
     inline val center: LinearLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
     inline val greenwich: LinearLayout.LayoutParams.() -> Unit
@@ -449,7 +455,9 @@ class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
 }
 
 
-class AnkoRelativeLayout(ctx: Context) : _RelativeLayout(ctx) {
+open class AnkoRelativeLayout(ctx: Context) : _RelativeLayout(ctx) {
+    inline val Int.dp: Int
+        get() = context.dip(this)
     inline val submissive: RelativeLayout.LayoutParams.() -> Unit
         get() = { width = wrapContent; height = wrapContent }
     inline val row: RelativeLayout.LayoutParams.() -> Unit
@@ -560,7 +568,9 @@ class AnkoRelativeLayout(ctx: Context) : _RelativeLayout(ctx) {
 }
 
 
-class AnkoDrawerLayout (ctx: Context): _DrawerLayout(ctx) {
+open class AnkoDrawerLayout (ctx: Context): _DrawerLayout(ctx) {
+    inline val Int.dp: Int
+        get() = context.dip(this)
     inline val center: DrawerLayout.LayoutParams.() -> Unit
         get() = { gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL }
     inline val greenwich: DrawerLayout.LayoutParams.() -> Unit

@@ -50,9 +50,9 @@ val textInEnd: TextView.() -> Unit = {
     textAlignment = View.TEXT_ALIGNMENT_TEXT_END
 }
 
-val textInCenter: TextView.() -> Unit = {
-    textAlignment = View.TEXT_ALIGNMENT_CENTER
-}
+val String.html: CharSequence
+    get() = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) Html.fromHtml(this)
+            else Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT)
 
 fun text(size: Float): TextView.() -> Unit = {
     textSize = dip(size).toFloat()
@@ -62,10 +62,16 @@ fun text(color: Int): TextView.() -> Unit = {
     textColor = color
 }
 
+@Deprecated("Use String.invoke() instead")
 fun hint(hint: CharSequence): TextView.() -> Unit = {
     this.hint = hint
 }
 
+operator fun String.invoke(): TextView.() -> Unit = {
+    hint = this@invoke
+}
+
+@Deprecated("Use html extenstion val instead")
 fun html(text: String): TextView.() -> Unit = {
     this.text = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) Html.fromHtml(text)
                 else Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT)
@@ -96,8 +102,13 @@ fun icTopRight(topIcon: Int, rightIcon: Int): TextView.() -> Unit = {
     setCompoundDrawablesWithIntrinsicBounds(0, topIcon, rightIcon, 0)
 }
 
+@Deprecated("Use pIcon instead")
 fun dpIconP(c: Int): TextView.() -> Unit = {
     compoundDrawablePadding = dip(c)
+}
+
+fun pIcon(c: Int): TextView.() -> Unit = {
+    compoundDrawablePadding = c
 }
 
 fun textWatcher (

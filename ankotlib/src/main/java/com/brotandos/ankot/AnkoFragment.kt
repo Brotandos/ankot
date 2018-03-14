@@ -20,5 +20,6 @@ abstract class AnkoFragment : Fragment() {
 
     override fun onCreateView(i: LayoutInflater, vg: ViewGroup?, b: Bundle?) = markup()
 
+    @Deprecated("Use layout's dp val instead")
     inline val Int.dp: Int get() = context!!.dip(this)
 }
