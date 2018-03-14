@@ -89,6 +89,30 @@ import org.jetbrains.anko.support.v4._DrawerLayout
         this.marginEnd = dip(c)
     }
 
+    fun m(l: Int, t: Int, r: Int, b: Int): .LayoutParams.() -> Unit = {
+        setMargins(l, t, r, b)
+    }
+    fun mHorizontal(c: Int): .LayoutParams.() -> Unit = {
+        marginStart = c
+        marginEnd = c
+    }
+    fun mVertical(c: Int): .LayoutParams.() -> Unit = {
+        topMargin = c
+        bottomMargin = c
+    }
+    fun top(c: Int): .LayoutParams.() -> Unit = {
+        topMargin = c
+    }
+    fun bottom(c: Int): .LayoutParams.() -> Unit = {
+        bottomMargin = c
+    }
+    fun start(c: Int): .LayoutParams.() -> Unit = {
+        marginStart = c
+    }
+    fun end(c: Int): .LayoutParams.() -> Unit = {
+        marginEnd = c
+    }
+
     fun <T: View> T.lparams(vararg params: .LayoutParams.() -> Unit) : T {
         layoutParams = .LayoutParams(wrapContent, wrapContent).apply {
             for (param in params) param()
@@ -175,6 +199,7 @@ class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
      * 's' stands for 'start'
      * 'c' stands for 'coefficient'
      * */
+    @Deprecated("Use m(c) instead")
     fun dpM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         leftMargin = value
@@ -182,30 +207,66 @@ class AnkoFrameLayout(ctx: Context) : _FrameLayout(ctx) {
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use m(l, t, r, b) instead")
     fun dpM(l: Int, t: Int, r: Int, b: Int): FrameLayout.LayoutParams.() -> Unit = {
         setMargins(dip(l), dip(t), dip(r), dip(b))
     }
+    @Deprecated("Use mHorizontal instead")
     fun dpHorizontalM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         marginStart = value
         marginEnd = value
     }
+    @Deprecated("Use mVertical instead")
     fun dpVerticalM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use top(c) instead")
     fun dpTopM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         this.topMargin = dip(c)
     }
+    @Deprecated("Use bottom(c) instead")
     fun dpBottomM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         this.bottomMargin = dip(c)
     }
+    @Deprecated("Use start(c) instead")
     fun dpStartM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         this.marginStart = dip(c)
     }
+    @Deprecated("Use end(c) instead")
     fun dpEndM(c: Int): FrameLayout.LayoutParams.() -> Unit = {
         this.marginEnd = dip(c)
+    }
+    fun m(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        setMargins(c, c, c, c)
+    }
+    fun m(h: Int, v: Int): FrameLayout.LayoutParams.() -> Unit = {
+        setMargins(h, v, h, v)
+    }
+    fun m(l: Int, t: Int, r: Int, b: Int): FrameLayout.LayoutParams.() -> Unit = {
+        setMargins(l, t, r, b)
+    }
+    fun mHorizontal(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+        marginEnd = c
+    }
+    fun mVertical(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+        bottomMargin = c
+    }
+    fun top(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+    }
+    fun bottom(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        bottomMargin = c
+    }
+    fun start(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+    }
+    fun end(c: Int): FrameLayout.LayoutParams.() -> Unit = {
+        marginEnd = c
     }
 
     fun <T: View> T.lparams(vararg params: FrameLayout.LayoutParams.() -> Unit) : T {
@@ -272,6 +333,7 @@ class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
      * 's' stands for 'start'
      * 'c' stands for 'coefficient'
      * */
+    @Deprecated("Use m function instead")
     fun dpM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         leftMargin = value
@@ -279,30 +341,66 @@ class AnkoLinearLayout(ctx: Context): _LinearLayout(ctx) {
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use m function instead")
     fun dpM(l: Int, t: Int, r: Int, b: Int): LinearLayout.LayoutParams.() -> Unit = {
         setMargins(dip(l), dip(t), dip(r), dip(b))
     }
+    @Deprecated("Use m function instead")
     fun dpHorizontalM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         marginStart = value
         marginEnd = value
     }
+    @Deprecated("Use m function instead")
     fun dpVerticalM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use m function instead")
     fun dpTopM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         this.topMargin = dip(c)
     }
+    @Deprecated("Use m function instead")
     fun dpBottomM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         this.bottomMargin = dip(c)
     }
+    @Deprecated("Use m function instead")
     fun dpStartM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         this.marginStart = dip(c)
     }
+    @Deprecated("Use m function instead")
     fun dpEndM(c: Int): LinearLayout.LayoutParams.() -> Unit = {
         this.marginEnd = dip(c)
+    }
+    fun m(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        setMargins(c, c, c, c)
+    }
+    fun m(h: Int, v: Int): LinearLayout.LayoutParams.() -> Unit = {
+        setMargins(h, v, h, v)
+    }
+    fun m(l: Int, t: Int, r: Int, b: Int): LinearLayout.LayoutParams.() -> Unit = {
+        setMargins(l, t, r, b)
+    }
+    fun mHorizontal(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+        marginEnd = c
+    }
+    fun mVertical(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+        bottomMargin = c
+    }
+    fun top(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+    }
+    fun bottom(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        bottomMargin = c
+    }
+    fun start(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+    }
+    fun end(c: Int): LinearLayout.LayoutParams.() -> Unit = {
+        marginEnd = c
     }
 
     fun <T: View> T.lparams(vararg params: LinearLayout.LayoutParams.() -> Unit) : T {
@@ -372,6 +470,7 @@ class AnkoRelativeLayout(ctx: Context) : _RelativeLayout(ctx) {
      * 's' stands for 'start'
      * 'c' stands for 'coefficient'
      * */
+    @Deprecated("Use m(c) instead")
     fun dpM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         leftMargin = value
@@ -379,30 +478,66 @@ class AnkoRelativeLayout(ctx: Context) : _RelativeLayout(ctx) {
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use m(l, t, r, b) instead")
     fun dpM(l: Int, t: Int, r: Int, b: Int): RelativeLayout.LayoutParams.() -> Unit = {
         setMargins(dip(l), dip(t), dip(r), dip(b))
     }
+    @Deprecated("Use mHorizontal instead")
     fun dpHorizontalM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         marginStart = value
         marginEnd = value
     }
+    @Deprecated("Use mVertical instead")
     fun dpVerticalM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use top(c) instead")
     fun dpTopM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
         this.topMargin = dip(c)
     }
+    @Deprecated("Use bottom(c) instead")
     fun dpBottomM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
         this.bottomMargin = dip(c)
     }
+    @Deprecated("Use start(c) instead")
     fun dpStartM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
         this.marginStart = dip(c)
     }
+    @Deprecated("Use end(c) instead")
     fun dpEndM(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
         this.marginEnd = dip(c)
+    }
+    fun m(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        setMargins(c, c, c, c)
+    }
+    fun m(h: Int, v: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        setMargins(h, v, h, v)
+    }
+    fun m(l: Int, t: Int, r: Int, b: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        setMargins(l, t, r, b)
+    }
+    fun mHorizontal(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+        marginEnd = c
+    }
+    fun mVertical(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+        bottomMargin = c
+    }
+    fun top(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+    }
+    fun bottom(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        bottomMargin = c
+    }
+    fun start(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+    }
+    fun end(c: Int): RelativeLayout.LayoutParams.() -> Unit = {
+        marginEnd = c
     }
 
     fun <T: View> T.lparams(vararg params: RelativeLayout.LayoutParams.() -> Unit) : T {
@@ -465,6 +600,7 @@ class AnkoDrawerLayout (ctx: Context): _DrawerLayout(ctx) {
      * 's' stands for 'start'
      * 'c' stands for 'coefficient'
      * */
+    @Deprecated("Use m(c) instead")
     fun dpM(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         leftMargin = value
@@ -472,30 +608,66 @@ class AnkoDrawerLayout (ctx: Context): _DrawerLayout(ctx) {
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use m(l, t, r, b) instead")
     fun dpM(l: Int, t: Int, r: Int, b: Int): DrawerLayout.LayoutParams.() -> Unit = {
         setMargins(dip(l), dip(t), dip(r), dip(b))
     }
+    @Deprecated("Use mHorizontal instead")
     fun dpHorizontalM(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         marginStart = value
         marginEnd = value
     }
+    @Deprecated("Use mVertical instead")
     fun dpVerticalM(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
         val value = dip(c)
         topMargin = value
         bottomMargin = value
     }
+    @Deprecated("Use top(c) instead")
     fun dpTopM(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
         this.topMargin = dip(c)
     }
+    @Deprecated("Use bottom(c) instead")
     fun dpBottomM(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
         this.bottomMargin = dip(c)
     }
+    @Deprecated("Use start(c) instead")
     fun dpStartM(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
         this.marginStart = dip(c)
     }
+    @Deprecated("Use end(c) instead")
     fun dpEndM(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
         this.marginEnd = dip(c)
+    }
+    fun m(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        setMargins(c, c, c, c)
+    }
+    fun m(h: Int, v: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        setMargins(h, v, h, v)
+    }
+    fun m(l: Int, t: Int, r: Int, b: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        setMargins(l, t, r, b)
+    }
+    fun mHorizontal(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+        marginEnd = c
+    }
+    fun mVertical(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+        bottomMargin = c
+    }
+    fun top(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        topMargin = c
+    }
+    fun bottom(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        bottomMargin = c
+    }
+    fun start(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        marginStart = c
+    }
+    fun end(c: Int): DrawerLayout.LayoutParams.() -> Unit = {
+        marginEnd = c
     }
 
     fun <T: View> T.lparams(vararg params: DrawerLayout.LayoutParams.() -> Unit) : T {

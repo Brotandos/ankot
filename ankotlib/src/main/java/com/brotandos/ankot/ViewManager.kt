@@ -5,6 +5,7 @@ import android.view.ViewManager
 import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import org.jetbrains.anko.AnkoViewDslMarker
 import org.jetbrains.anko._RadioGroup
 import org.jetbrains.anko.custom.ankoView
@@ -483,4 +484,30 @@ fun ViewManager.gridList (
     layoutManager = android.support.v7.widget.GridLayoutManager(context, spanCount)
     initializations.forEach { it() }
     additionalInit()
+}
+
+fun ViewManager.bnve (
+        menuId: Int,
+        init: (@AnkoViewDslMarker BottomNavigationViewEx).() -> Unit
+) : BottomNavigationViewEx = ankoView({ BottomNavigationViewEx(it) }, 0) {
+    inflateMenu(menuId)
+    init()
+}
+
+fun ViewManager.bnve (
+        menuId: Int,
+        vararg inits: (@AnkoViewDslMarker BottomNavigationViewEx).() -> Unit
+) : BottomNavigationViewEx = ankoView({ BottomNavigationViewEx(it) }, 0) {
+    inflateMenu(menuId)
+    inits.forEach { it() }
+}
+
+fun ViewManager.bnve (
+        menuId: Int,
+        vararg inits: (@AnkoViewDslMarker BottomNavigationViewEx).() -> Unit,
+        init: (@AnkoViewDslMarker BottomNavigationViewEx).() -> Unit
+) : BottomNavigationViewEx = ankoView({ BottomNavigationViewEx(it) }, 0) {
+    inflateMenu(menuId)
+    inits.forEach { it() }
+    init()
 }
