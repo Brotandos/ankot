@@ -99,7 +99,7 @@ fun kAdapter (
     override fun getItemViewType(position: Int) = position
     override fun onCreateViewHolder(parent: ViewGroup, position: Int)
             = object : RecyclerView.ViewHolder (
-            AnkoContextImpl(parent.context, parent.context, false)
+            KoatlContextImpl(parent.context, parent.context, false)
                     .apply { itemView(position) }.view
     ) {}
 }
