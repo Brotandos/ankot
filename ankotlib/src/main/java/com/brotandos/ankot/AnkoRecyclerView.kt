@@ -90,6 +90,19 @@ fun buildAdapterFor (
     ) {}
 }
 
+fun kAdapter (
+        items: List<*>,
+        itemView: KoatlContext<Context>.(Int) -> Unit
+) = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
+    override fun getItemCount() = items.size
+    override fun getItemViewType(position: Int) = position
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int)
+            = object : RecyclerView.ViewHolder (
+            AnkoContextImpl(parent.context, parent.context, false)
+                    .apply { itemView(position) }.view
+    ) {}
+}
 
 @Deprecated("Use forItems instead")
 fun buildAdapter (

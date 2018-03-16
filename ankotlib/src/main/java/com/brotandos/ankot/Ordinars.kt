@@ -1,9 +1,15 @@
 package com.brotandos.ankot
 
+import android.content.Context
 import android.support.design.widget.NavigationView
+import android.support.v4.content.res.ResourcesCompat
+import android.view.ViewManager
 import android.view.animation.Animation
 import android.widget.EditText
 import android.widget.ImageView
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+import org.jetbrains.anko.AlertBuilder
+import org.jetbrains.anko.UI
 import java.io.BufferedInputStream
 import java.io.ByteArrayOutputStream
 
@@ -43,3 +49,15 @@ fun BufferedInputStream.getString() : String {
 }
 
 inline val EditText.textVal: String get() = text.toString()
+
+
+fun BottomNavigationViewEx.setItemStateColor(resId: Int) {
+    val colorStateList = ResourcesCompat.getColorStateList(resources, resId, null)
+    itemIconTintList = colorStateList
+    itemTextColor = colorStateList
+}
+
+
+fun AlertBuilder<*>.customKoatlView(dsl: KoatlContext<Context>.() -> Unit) {
+    customView = ctx.KUI(dsl).view
+}
